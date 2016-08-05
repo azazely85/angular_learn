@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="myGreetings">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -12,5 +12,8 @@
 <div ng-show="greetigsShown">
     Hi ,{{name}}!
 </div>
+<script>
+    angular.module('myGreetings',[]);
+</script>
 </body>
 </html>
