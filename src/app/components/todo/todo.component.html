@@ -1,3 +1,16 @@
-<p>
-  todo works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let tasks of todos; let i = index">
+      <div class="card mt-5" [ngClass]="{'text-white bg-success': tasks.complete === true}" >
+        <div class="card-body">
+          <h5 class="card-title">{{ tasks.title }}</h5>
+          <p class="card-text">{{ tasks.text }}</p>
+          <button class="btn" (click)="changeTask(i)" [ngClass]="{'btn-success': !tasks.complete, 'btn-primary': tasks.complete}">
+            {{ tasks.complete ? 'Incomplete' : 'Complete'}}
+          </button>
+          <button class="btn btn-danger" (click)="deleteTask(i)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
