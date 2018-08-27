@@ -1,6 +1,7 @@
-<div class="container">
+<div class="container mt-5">
+  <div class="alert alert-info" *ngIf="!todos.length">Empty list</div>
   <div class="row">
-    <div class="col-lg-4" *ngFor="let tasks of todos; let i = index">
+    <div class="col-lg-4" *ngFor="let tasks of todos; let i = index; trackBy: identify">
       <div class="card mt-5" [ngClass]="{'text-white bg-success': tasks.complete === true}" >
         <div class="card-body">
           <h5 class="card-title">{{ tasks.title }}</h5>
@@ -8,7 +9,7 @@
           <button class="btn" (click)="changeTask(i)" [ngClass]="{'btn-success': !tasks.complete, 'btn-primary': tasks.complete}">
             {{ tasks.complete ? 'Incomplete' : 'Complete'}}
           </button>
-          <button class="btn btn-danger" (click)="deleteTask(i)">Delete</button>
+          <button class="btn btn-danger" (click)="deleteTask(tasks.id)">Delete</button>
         </div>
       </div>
     </div>

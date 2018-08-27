@@ -14,11 +14,13 @@ export class TodoComponent implements OnInit {
     ngOnInit() {
         this.todos =[
             {
+                id: '1',
                 title: 'Task 1',
                 text: 'My text 1',
                 complete: true,
             },
             {
+                id: '2',
                 title: 'Task 2',
                 text: 'My text 2',
                 complete: false,
@@ -26,12 +28,15 @@ export class TodoComponent implements OnInit {
         ]
     }
 
-    deleteTask(i){
-        this.todos.splice(i, 1);
+    deleteTask(id: string){
+        this.todos = this.todos.filter(task => task.id !== id);
     }
 
     changeTask(i){
         this.todos[i].complete = !this.todos[i].complete;
+    }
+    identify(index){
+        return index;
     }
 
 }
