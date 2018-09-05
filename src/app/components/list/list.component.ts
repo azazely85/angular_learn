@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { JsonplaceholderService } from "../../services/jsonplaceholder.service";
+import { Task } from "../../models/Task";
+
 
 @Component({
   selector: 'app-list',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  tasks: Task[];
+  constructor(
+      public tasker: JsonplaceholderService
+  ) { }
 
   ngOnInit() {
+    this.tasks = this.tasker.getTasks();
   }
 
 }
