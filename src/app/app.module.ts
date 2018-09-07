@@ -7,6 +7,7 @@ import { FormComponent } from './components/form/form.component';
 import { ListComponent } from './components/list/list.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { JsonplaceholderService } from "./services/jsonplaceholder.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { JsonplaceholderService } from "./services/jsonplaceholder.service";
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [JsonplaceholderService],
   bootstrap: [AppComponent]

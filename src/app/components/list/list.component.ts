@@ -16,7 +16,17 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tasks = this.tasker.getTasks();
+    this.tasker.getTasks().subscribe( data =>{
+      if (data) {
+        this.tasks = data;
+      }
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  identify(index){
+    return index;
   }
 
 }

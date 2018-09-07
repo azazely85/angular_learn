@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Task } from "../models/Task";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class JsonplaceholderService {
-  tasks: Task[] = [
-      {
-        id: '1',
-        text: 'Text1'
-      },
-      {
-          id: '2',
-          text: 'Text2'
-      }
-  ];
 
-  constructor() { }
+  configUrl = 'https://jsonplaceholder.typicode.com/todos/';
+
+  constructor(
+      public http: HttpClient
+  ) { }
 
   getTasks(){
-    return this.tasks;
+    return this.http.get(this.configUrl);
+  }
+
+  deleteTask(id: number){
+      return this.http.delete(this.configUrl + id).subscribe(data =>{
+          console.log('Delete', data);
+      });
   }
 }

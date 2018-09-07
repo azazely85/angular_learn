@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from "../../models/Task";
+import { JsonplaceholderService } from "../../services/jsonplaceholder.service";
 
 @Component({
   selector: 'app-list-item',
@@ -9,9 +10,14 @@ import { Task } from "../../models/Task";
 export class ListItemComponent implements OnInit {
   @Input() task: Task;
 
-  constructor() { }
+  constructor(
+      public tasker: JsonplaceholderService
+  ) { }
 
   ngOnInit() {
   }
 
+  deleteTask(){
+    return this.tasker.deleteTask(this.task.id);
+  }
 }
