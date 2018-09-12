@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
+import { Task } from '../models/Task';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,15 @@ export class JsonplaceholderService {
       public http: HttpClient
   ) { }
 
-  getTasks(){
+  getTasks() {
     return this.http.get(this.configUrl);
   }
-
-  deleteTask(id: number){
+  addTask(task: Task) {
+    return this.http.post(this.configUrl, {
+        body: task
+    });
+  }
+  deleteTask(id: number) {
       return this.http.delete(this.configUrl + id).subscribe(data =>{
           console.log('Delete', data);
       });

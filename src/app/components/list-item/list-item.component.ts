@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Task } from "../../models/Task";
 import { JsonplaceholderService } from "../../services/jsonplaceholder.service";
 
@@ -9,7 +9,7 @@ import { JsonplaceholderService } from "../../services/jsonplaceholder.service";
 })
 export class ListItemComponent implements OnInit {
   @Input() task: Task;
-
+  @Output() delete = new EventEmitter();
   constructor(
       public tasker: JsonplaceholderService
   ) { }
@@ -17,7 +17,7 @@ export class ListItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  deleteTask(){
-    return this.tasker.deleteTask(this.task.id);
+  deleteOneTask() {
+    this.delete.emit(this.task.id);
   }
 }

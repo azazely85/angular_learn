@@ -24,8 +24,11 @@ export class ListComponent implements OnInit {
       console.log(error);
     });
   }
-
-  identify(index){
+    deleteTask(id) {
+        this.tasker.deleteTask(id).unsubscribe();
+        this.tasks = this.tasks.filter( task => task.id !== id);
+    }
+  identify(index) {
     return index;
   }
 
