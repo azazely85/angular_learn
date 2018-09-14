@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JsonplaceholderService } from '../../services/jsonplaceholder.service';
 
 @Component({
   selector: 'app-form',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  title: string;
+
+  constructor(
+      public tasker: JsonplaceholderService
+  ) { }
 
   ngOnInit() {
   }
 
+  addTask() {
+    const newTask = {
+      userId: 1,
+      completed: false,
+      title: this.title
+    };
+    this.tasker.addTask(newTask).subscribe( data => {
+      console.log();
+    });
+  }
 }
