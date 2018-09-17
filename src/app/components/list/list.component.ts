@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { JsonplaceholderService } from "../../services/jsonplaceholder.service";
-import { Task } from "../../models/Task";
+import { JsonplaceholderService } from '../../services/jsonplaceholder.service';
+import { Task } from '../../models/Task';
 
 
 @Component({
@@ -16,12 +16,17 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tasker.getTasks().subscribe( data =>{
+    this.tasker.getTasks().subscribe( (data: Task[]) => {
       if (data) {
         this.tasks = data;
       }
     }, error => {
       console.log(error);
+    });
+    this.tasker.newTask.subscribe( (data: Task) => {
+      if (data['body']) {
+        this.tasks.unshift(data['body']);
+      }
     });
   }
     deleteTask(id) {
