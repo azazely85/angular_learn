@@ -9,6 +9,7 @@ import { ListItemComponent } from './components/list-item/list-item.component';
 import { JsonplaceholderService } from './services/jsonplaceholder.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     HomeComponent,
     FormComponent,
     ListComponent,
-    ListItemComponent
+    ListItemComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

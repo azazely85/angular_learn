@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Todo } from "../../models/Todo";
+import { Todo } from '../../models/Todo';
 
 @Component({
     selector: 'app-todo',
@@ -18,7 +18,7 @@ export class TodoComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        this.todos =[
+        this.todos = [
             {
                 id: '1',
                 title: 'Task 1',
@@ -31,9 +31,9 @@ export class TodoComponent implements OnInit {
                 text: 'My text 2',
                 complete: false,
             },
-        ]
+        ];
     }
-    addTodo(){
+    addTodo() {
         const newTask = {
             id: String(this.todos.length + 1),
             title: this.todo.title,
@@ -45,14 +45,14 @@ export class TodoComponent implements OnInit {
         this.form.reset();
     }
 
-    deleteTask(id: string){
+    deleteTask(id: string) {
         this.todos = this.todos.filter(task => task.id !== id);
     }
 
-    changeTask(i){
+    changeTask(i) {
         this.todos[i].complete = !this.todos[i].complete;
     }
-    identify(index){
+    identify(index) {
         return index;
     }
 

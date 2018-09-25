@@ -35,6 +35,13 @@ export class FormComponent implements OnInit {
         closeOnClick: true,
         timeout: 10000
       });
+    }, error => {
+      this.flashMessage.show(error.message, {
+          cssClass: 'alert-danger',
+          showCloseBtn: true,
+          closeOnClick: true,
+          timeout: 10000
+      });
     });
   }
 }
