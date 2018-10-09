@@ -32,11 +32,11 @@ export class ListComponent implements OnInit {
       }
     });
     this.tasker.updatingTask.subscribe((task: Task) => {
-        if (task.title) {
+        if (task['body']) {
           this.tasks = this.tasks.map(item => {
             if (item.id === task.id) {
-              item.title = task.title;
-              item.completed = task.completed;
+              item.title = task['body'].title;
+              item.completed = task['body'].completed;
             }
             return item;
           });
