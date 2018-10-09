@@ -37,6 +37,7 @@ export class FormComponent implements OnInit {
     }
     this.tasker.editTask(updateTask).subscribe((task: Task) => {
         this.form.reset();
+        this.isEdit = false;
         this.tasker.emitUpdateTask(task);
         this.flashMessage.show('Edit success', {
             cssClass: 'alert-success',
