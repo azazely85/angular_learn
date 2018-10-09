@@ -31,6 +31,17 @@ export class ListComponent implements OnInit {
         this.tasker.updateCount(this.tasks.length);
       }
     });
+    this.tasker.updatingTask.subscribe((task: Task) => {
+        if (task.title) {
+          this.tasks = this.tasks.map(item => {
+            if (item.id === task.id) {
+              item.title = task.title;
+              item.completed = task.completed;
+            }
+            return item;
+          });
+        }
+    });
   }
   deleteTask(id) {
       this.tasker.deleteTask(id).unsubscribe();
@@ -38,7 +49,7 @@ export class ListComponent implements OnInit {
       this.tasker.updateCount(this.tasks.length);
   }
   editTask(task: Task) {
-    this.tasker.emitEditTask(task)
+    this.tasker.emitEditTask(task);
   }
 
   identify(index) {

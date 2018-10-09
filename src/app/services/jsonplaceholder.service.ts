@@ -16,6 +16,8 @@ export class JsonplaceholderService {
   taskCount = this.taskCountSource.asObservable();
   private editTaskSource = new BehaviorSubject<Task>({id: 0, title: '', userId: 0, completed: false});
   editingTask = this.editTaskSource.asObservable();
+  private updateTask = new BehaviorSubject<Task>({id: 0, title: '', userId: 0, completed: false});
+  updatingTask = this.updateTask.asObservable();
   constructor(
       public http: HttpClient
   ) { }
@@ -29,6 +31,9 @@ export class JsonplaceholderService {
     return this.http.post(this.configUrl, {
         body: task
     });
+  }
+  emitUpdateTask(task: Task) {
+      this.updateTask.next(task);
   }
   deleteTask(id: number) {
       return this.http.delete(this.configUrl + id).subscribe(data =>{

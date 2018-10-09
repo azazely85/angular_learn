@@ -35,9 +35,9 @@ export class FormComponent implements OnInit {
       userId: 1,
       completed: false
     }
-    this.tasker.editTask(updateTask).subscribe((data: Task) => {
+    this.tasker.editTask(updateTask).subscribe((task: Task) => {
         this.form.reset();
-        this.tasker.emitEditTask(data);
+        this.tasker.emitUpdateTask(task);
         this.flashMessage.show('Edit success', {
             cssClass: 'alert-success',
             showCloseBtn: true,
