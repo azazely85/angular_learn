@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Task } from "../../models/Task";
-import { JsonplaceholderService } from "../../services/jsonplaceholder.service";
+import { Task } from '../../models/Task';
+import { JsonplaceholderService } from '../../services/jsonplaceholder.service';
 
 @Component({
   selector: 'app-list-item',
@@ -10,6 +10,7 @@ import { JsonplaceholderService } from "../../services/jsonplaceholder.service";
 export class ListItemComponent implements OnInit {
   @Input() task: Task;
   @Output() delete = new EventEmitter();
+  @Output() edit = new EventEmitter();
   constructor(
       public tasker: JsonplaceholderService
   ) { }
@@ -19,5 +20,10 @@ export class ListItemComponent implements OnInit {
 
   deleteOneTask() {
     this.delete.emit(this.task.id);
+  }
+
+  editTask() {
+  const updateTask = Object.assign({}, this.task);
+      this.edit.emit(updateTask);
   }
 }

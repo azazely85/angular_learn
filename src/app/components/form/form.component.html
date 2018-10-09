@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-body">
-    <form #form="ngForm" novalidate (ngSubmit)="addTask()">
+    <form #form="ngForm" novalidate>
       <div class="form-group">
         <label for="text">Text*</label>
         <input type="text" class="form-control"
@@ -12,7 +12,12 @@
         >
       </div>
       <div class="alert alert-danger" *ngIf="taskTitle.touched && taskTitle.invalid">Title required</div>
-      <button class="btn btn-primary" [disabled]="taskTitle.invalid">Add task</button>
+      <button class="btn btn-primary" *ngIf="!isEdit" [disabled]="taskTitle.invalid" (click)="addTask()">
+        Add task
+      </button>
+      <button class="bnt btn-primary" *ngIf="isEdit" [disabled]="taskTitle.invalid" (click)="editTask()">
+        Edit task
+      </button>
     </form>
   </div>
 </div>

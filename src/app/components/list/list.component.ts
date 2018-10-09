@@ -37,6 +37,10 @@ export class ListComponent implements OnInit {
       this.tasks = this.tasks.filter( task => task.id !== id);
       this.tasker.updateCount(this.tasks.length);
   }
+  editTask(task: Task) {
+    this.tasker.emitEditTask(task)
+  }
+
   identify(index) {
     return index;
   }
