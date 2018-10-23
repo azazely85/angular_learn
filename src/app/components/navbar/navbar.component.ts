@@ -11,11 +11,9 @@ export class NavbarComponent implements OnInit {
   todoLength: number;
 
   constructor(
-      private tasker: JsonplaceholderService
   ) { }
 
   ngOnInit() {
-    this.tasker.taskCount.subscribe(length => this.todoLength = length);
   }
 
 }
