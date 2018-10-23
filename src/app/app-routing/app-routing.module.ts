@@ -7,6 +7,7 @@ import { EditBookComponent } from '../components/edit-book/edit-book.component';
 import { NotFoundComponent } from '../components/not-found/not-found.component';
 
 const routes: Routes = [
+    { path: '', redirectTo: 'panel', pathMatch: 'full'},
     { path: 'panel', component: PanelComponent},
     { path: 'about', component: AboutComponent},
     { path: 'add-book', component: AddBookComponent},
