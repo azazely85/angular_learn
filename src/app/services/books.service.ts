@@ -25,7 +25,8 @@ export class BooksService {
   }
 
   getBookById(id: string) {
-
+    const book = this.books.find(data => data.id === id);
+    return of(book);
   }
 
   addBook(book: Book) {
@@ -33,7 +34,13 @@ export class BooksService {
   }
 
   editBook(book: Book) {
-
+    this.books = this.books.map( data => {
+        if (book.id === data.id) {
+            data = book;
+        }
+        return data;
+    });
+    return of(book);
   }
 
   deleteBook(id: string) {
