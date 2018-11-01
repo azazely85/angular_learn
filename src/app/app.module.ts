@@ -12,6 +12,7 @@ import { IdService } from './services/id.service';
 import { BooksService } from './services/books.service';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { LoginComponent } from './components/login/login.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [BooksService, IdService],
+  providers: [BooksService, IdService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
