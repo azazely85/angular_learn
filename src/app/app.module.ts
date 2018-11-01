@@ -13,6 +13,10 @@ import { BooksService } from './services/books.service';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,10 @@ import { AuthService } from './services/auth.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [BooksService, IdService, AuthService],
   bootstrap: [AppComponent]
