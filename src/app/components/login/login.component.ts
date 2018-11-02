@@ -16,8 +16,19 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.authService.checkAuth().subscribe( auth => {
+      if (auth) {
+          this.router.navigate(['/panel']);
+      }
+    });
   }
   onSubmit() {
-
+    this.authService.login(this.email, this.password).then(user => {
+      this.router.navigate(['/panel']);
+    }).catch( err => {
+        console.log(err);
+    });
   }
+
+
 }

@@ -10,13 +10,13 @@
           <form novalidate #form="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" id="email" class="form-control" [ngModel]="email" required name="email">
+              <input type="email" id="email" class="form-control" [(ngModel)]="email" required name="email">
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" id="password" class="form-control" [ngModel]="password" required name="password">
+              <input type="password" id="password" class="form-control" [(ngModel)]="password" required name="password">
             </div>
-            <button class="btn btn-primary btn-block">Login</button>
+            <button class="btn btn-primary btn-block" [disabled]="form.invalid">Login</button>
           </form>
         </div>
       </div>

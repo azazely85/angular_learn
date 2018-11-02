@@ -13,7 +13,11 @@ export class AuthService {
   login(email: string, passord: string) {
     return new Promise((resolve, reject) => {
       this.afAuth.auth.signInWithEmailAndPassword(email, passord).then(user => resolve(user))
-          .catch( error => reject(error));
+          .catch( err => reject(err));
     });
   }
+
+    checkAuth() {
+        return this.afAuth.authState;
+    }
 }

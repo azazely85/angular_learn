@@ -13,8 +13,9 @@ const routes: Routes = [
     { path: 'about', component: AboutComponent},
     { path: 'add-book', component: AddBookComponent},
     { path: 'books/:id', component: EditBookComponent},
-    { path: '**', component: NotFoundComponent},
-    { path: 'login', component: LoginComponent}
+    { path: 'login', component: LoginComponent},
+    { path: '**', component: NotFoundComponent}
+
 ];
 
 
