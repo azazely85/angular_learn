@@ -5,7 +5,7 @@
         <div class="card-body">
           <h1 class="text-center mb-4 mt-4">
             <span class="text-primary">Books panel </span>
-            login
+            Register
           </h1>
           <form novalidate #form="ngForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
@@ -16,7 +16,7 @@
               <label for="password">Password</label>
               <input type="password" id="password" class="form-control" [(ngModel)]="password" required name="password">
             </div>
-            <button class="btn btn-primary btn-block" [disabled]="form.invalid">Login</button>
+            <button class="btn btn-primary btn-block" [disabled]="form.invalid">Register</button>
           </form>
         </div>
       </div>
