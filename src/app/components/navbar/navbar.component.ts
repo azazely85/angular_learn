@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { JsonplaceholderService } from '../../services/jsonplaceholder.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,12 +8,22 @@ import { JsonplaceholderService } from '../../services/jsonplaceholder.service';
 })
 export class NavbarComponent implements OnInit {
 
-  todoLength: number;
+  isLogin: boolean;
 
   constructor(
+      private authService: AuthService,
   ) { }
 
   ngOnInit() {
+      this.isLogin = false;
+      this.authService.checkAuth().subscribe( auth => {
+          if (auth) {
+              this.isLogin = true;
+          }
+      });
+  }
+  logOut() {
+      this.authService.logOut();
   }
 
 }
