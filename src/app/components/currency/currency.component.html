@@ -1,5 +1,3 @@
-<select name="name" class="form-control">
-    <option value="USD"></option>
-    <option value="EUR"></option>
-    <option value="GBP"></option>
+<select name="name" class="form-control" [(ngModel)]="selectedCurrency.name" (change)="updateCurrency()">
+    <option *ngFor="let currency of currencyList" [ngValue]="currency.name">{{currency.name}}</option>
 </select>
