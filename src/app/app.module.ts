@@ -19,6 +19,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { RegisterComponent } from './components/register/register.component';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
+import { CurrencyComponent } from './components/currency/currency.component';
+import { CurrencyService } from './services/currency.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { CustomDatePipe } from './pipes/custom-date.pipe';
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    CustomDatePipe
+    CustomDatePipe,
+    CurrencyComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,7 @@ import { CustomDatePipe } from './pipes/custom-date.pipe';
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [BooksService, IdService, AuthService],
+  providers: [BooksService, IdService, AuthService, CurrencyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

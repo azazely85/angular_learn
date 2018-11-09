@@ -10,8 +10,11 @@ export class CustomDatePipe implements PipeTransform {
     let result;
     switch (format) {
         case 'full':
-          result = date.toLocaleString(locale, {weekday: 'long', year: 'numeric', month: 'short', day: 'numeric'});
+          result = date.toLocaleString(locale, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
           break;
+        case 'short':
+            result = date.toLocaleString(locale, {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'});
+            break;
         default:
             result = date.toLocaleString(locale);
             break;
