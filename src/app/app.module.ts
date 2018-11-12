@@ -21,6 +21,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
 import { CurrencyComponent } from './components/currency/currency.component';
 import { CurrencyService } from './services/currency.service';
+import { BasketComponent } from './components/basket/basket.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CurrencyService } from './services/currency.service';
     LoginComponent,
     RegisterComponent,
     CustomDatePipe,
-    CurrencyComponent
+    CurrencyComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,

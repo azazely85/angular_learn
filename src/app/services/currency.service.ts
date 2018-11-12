@@ -23,12 +23,16 @@ export class CurrencyService {
         coefficient: 0.9
       }
   ];
-  private currencySourse = new BehaviorSubject<Currency[]>(this.currency);
-  selectedCurrency = this.currencySourse.asObservable();
+  private currencySource = new BehaviorSubject<Currency[]>(this.currency);
+  selectedCurrency = this.currencySource.asObservable();
 
   constructor() { }
 
   selectCurrency(name: string) {
-
+    this.currency = this.currency.map((currency: Currency) => {
+        currency.isActive = currency.name === name;
+        return currency;
+    });
+    this.currencySource.next(this.currency);
   }
 }

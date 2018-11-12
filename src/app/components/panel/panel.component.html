@@ -34,7 +34,7 @@
       <div class="card card-body">
         <div class="card-title">
           {{book.name}}
-          <span class="badge badge-success ml-auto">{{book.price | currency: 'USD'}}</span>
+          <span class="badge badge-success ml-auto">{{book.price*currentCurrency['coefficient'] | currency: currentCurrency['name']}}</span>
         </div>
         <span class="text-info">{{book.author}}</span>
         <span class="text-primary">{{book.date | customDate: 'ru-Ru': 'full'}}</span>
