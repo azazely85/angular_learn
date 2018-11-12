@@ -16,6 +16,9 @@
           About
         </a>
       </li>
+      <li class="navbar-text mr-3">
+        <app-basket></app-basket>
+      </li>
       <li class="nav-item" *ngIf="!isLogin">
         <a class="btn btn-primary" routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           Login

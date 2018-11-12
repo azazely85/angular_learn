@@ -15,12 +15,12 @@ export class PanelComponent implements OnInit {
   searchText: string;
   currentCurrency: Currency;
   constructor(
-      public BookService: BooksService,
+      public bookService: BooksService,
       public currencyService: CurrencyService
   ) {  }
 
   ngOnInit() {
-    this.BookService.getBooks().subscribe((books: Book[]) => this.books = books);
+    this.bookService.getBooks().subscribe((books: Book[]) => this.books = books);
     this.currencyService.selectedCurrency.subscribe( data => {
     this.currentCurrency = Object.create(data.find( obj => obj.isActive));
     });
