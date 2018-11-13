@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BasketService } from '../../services/basket.service';
-import { Book } from '../../models/Book';
+
 
 @Component({
   selector: 'app-basket',
@@ -17,6 +17,12 @@ export class BasketComponent implements OnInit {
     this.basketService.getBasketItem().subscribe( items => {
       this.basketItems = items;
     });
+  }
+  dellItem(id) {
+      this.basketService.dellItem(id);
+  }
+  dellAllItems() {
+      this.basketService.dellAllItems();
   }
 
 }

@@ -10,14 +10,27 @@ import { BasketService } from '../../services/basket.service';
 })
 export class ClientHomeComponent implements OnInit {
   books: Book[];
-
   constructor(
       public bookService: BooksService,
       public basketService: BasketService
   ) { }
 
   ngOnInit() {
-      this.bookService.getBooks().subscribe((books: Book[]) => this.books = books);
+    this.bookService.getBooks().subscribe((books: Book[]) => this.books = books);
+    this.basketService.clearAllItemsEvent.subscribe( status => {
+      if (status) {
+        this.books.forEach( book => book.isAdded = false);
+      }
+    });
+    this.basketService.deleteItemsEvent.subscribe( id => {
+      if (id) {
+        this.books.forEach( book => {
+          if (book.id === id) {
+            book.isAdded = false;
+          }
+        });
+      }
+    });
   }
 
   addBook(book) {
@@ -26,8 +39,12 @@ export class ClientHomeComponent implements OnInit {
       price: book.price,
       name: book.name
     };
-    this.basketService.addItem(newBasketItem).subscribe( book => {
-      console.log(book);
+    this.basketService.addItem(newBasketItem).subscribe( item => {
+      console.log(item);
     });
   }
+
+    deleteBook(id) {
+      this.basketService.dellItem(id);
+    }
 }
