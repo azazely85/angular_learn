@@ -10,7 +10,7 @@
         <span class="text-primary">{{book.date | customDate: 'ru-Ru': 'full'}}</span>
         <p class="card-text">{{book.description}}</p>
         <a href="{{link.link}}" *ngFor="let link of book.links">{{link.type}}</a>
-        <button class="btn btn-success mt-3">Add to basket</button>
+        <button class="btn btn-success mt-3" (click)="addBook(book)">Add to basket</button>
         <button class="btn btn-danger mt-3">Delete from basket</button>
         <a class="btn btn-primary mt-3">Detail</a>
       </div>
